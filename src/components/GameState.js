@@ -14,12 +14,14 @@ export default function GameState() {
         </p>
       </div>
 
-      <div className="galgje">
-        <img src={balk1} alt="" className="balk1" />
-        <img src={balk2} alt="" className="balk2" />
-        <img src={steunbalk} alt="" className="steunbalk" />
-        <img src={touw} alt="" className="touw" />
-        <img src={popje} alt="" className="popje" />
+      <div className="galgjeImages">
+        <div className="galgje">
+          <img src={balk1} alt="" className="balk1" />
+          <img src={balk2} alt="" className="balk2" />
+          <img src={steunbalk} alt="" className="steunbalk" />
+          <img src={touw} alt="" className="touw" />
+          <img src={popje} alt="" className="popje" />
+        </div>
       </div>
 
       <div className="hints">

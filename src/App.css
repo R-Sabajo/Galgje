@@ -58,10 +58,11 @@
 /* Galgje tekening */
 
 .galgje {
+  margin: 0 auto;
   border: 1px dashed #555;
   position: relative;
   height: 100%;
-  width: 100%;
+  width: 220px;
   overflow: hidden;
 }
 
