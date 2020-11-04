@@ -66,6 +66,24 @@
   overflow: hidden;
 }
 
+.gras {
+  position: absolute;
+  top: 190px;
+  left: 130px;
+  height: 30px;
+  width: 50px;
+}
+
+.gras2 {
+  position: absolute;
+  top: 195px;
+  left: 160px;
+  height: 25px;
+  width: 45px;
+  z-index: 10;
+  transform: rotate(10deg);
+}
+
 .balk1 {
   position: absolute;
   top: 30px;
