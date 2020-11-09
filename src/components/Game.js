@@ -44,7 +44,7 @@ export default function Game() {
       />
       <div className="lettersBox">
         {lettersArray.map(item => (
-          <Letter key={item.id} letter={item.name} />
+          <Letter key={item.id} id={item.id} letter={item.name} />
         ))}
       </div>
     </main>
