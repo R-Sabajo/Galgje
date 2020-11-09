@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GameView from './GameView';
 import WordsList from './WordsList';
 import Word from './Word';
@@ -17,33 +17,38 @@ export default function Game() {
     const randomIndex = Math.floor(Math.random() * WordsList.length);
 
     // set the state for randomWord as an object.
-    setRandomWord({
-      randomIndex: randomIndex,
-      word: WordsList[randomIndex].toUpperCase().split(''),
-      length: WordsList[randomIndex].length,
-    });
+    setRandomWord(WordsList[randomIndex].toUpperCase().split(''));
 
     // Set the Game state as started.
     setIsStarted(true);
   };
 
   // set the answerArray with dashes according to the random word length
-  let answerArray = [];
+  const [answerArray, setAnswerArray] = useState([]);
 
-  for (let i = 0; i < randomWord.length; i++) {
-    answerArray.push('_');
-  }
+  useEffect(() => {
+    let arr = [];
+    for (let i = 0; i < randomWord.length; i++) {
+      arr.push('_');
+    }
+    setAnswerArray(arr);
+  }, [randomWord.length]);
 
   console.log(randomWord);
-  console.log(answerArray);
 
   // Number of guesses the players has
   const [guesses, setGuesses] = useState(5);
 
   const handleLetterClick = name => {
-    console.log(name);
-    if (randomWord.word.includes(name)) {
-      console.log('correct');
+    if (randomWord.includes(name)) {
+      console.log(name);
+      for (let j = 0; j < randomWord.length; j++) {
+        if (randomWord[j] === name) {
+          answerArray[j] = name;
+        }
+      }
+      setAnswerArray(answerArray);
+      console.log(answerArray);
     } else {
       console.log('wrong');
     }
