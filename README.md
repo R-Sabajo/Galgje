@@ -1,3 +1,5 @@
+A dutch version of the hangman game. With drawings of my 9 year old daughter. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
