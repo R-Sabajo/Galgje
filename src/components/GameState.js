@@ -27,12 +27,6 @@ export default function GameState(props) {
           <img src={popje} alt="" className="popje" />
         </div>
       </div>
-
-      <div className="hints">
-        <p>
-          je hebt nog <span className="hints_left">3</span> hints over
-        </p>
-      </div>
     </div>
   );
 }

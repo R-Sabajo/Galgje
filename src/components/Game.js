@@ -20,16 +20,34 @@ export default function Game() {
     setRandomWord({
       randomIndex: randomIndex,
       word: WordsList[randomIndex].toUpperCase().split(''),
+      length: WordsList[randomIndex].length,
     });
 
     // Set the Game state as started.
     setIsStarted(true);
   };
 
+  // set the answerArray with dashes according to the random word length
+  let answerArray = [];
+
+  for (let i = 0; i < randomWord.length; i++) {
+    answerArray.push('_');
+  }
+
   console.log(randomWord);
+  console.log(answerArray);
 
   // Number of guesses the players has
   const [guesses, setGuesses] = useState(5);
+
+  const handleLetterClick = name => {
+    console.log(name);
+    if (randomWord.word.includes(name)) {
+      console.log('correct');
+    } else {
+      console.log('wrong');
+    }
+  };
 
   // Array of letters not yet guessed by the player
   const [lettersArray, setLettersArray] = useState(alphabet);
@@ -37,14 +55,21 @@ export default function Game() {
   return (
     <main className="game">
       <GameView guessesLeft={guesses} />
+
       <Word
         isStarted={isStarted}
         handleClick={handleClick}
-        randomWord={randomWord}
+        answerArray={answerArray}
       />
+
       <div className="lettersBox">
         {lettersArray.map(item => (
-          <Letter key={item.id} id={item.id} letter={item.name} />
+          <Letter
+            handleLetterClick={handleLetterClick}
+            key={item.id}
+            id={item.id}
+            name={item.name}
+          />
         ))}
       </div>
     </main>
