@@ -15,8 +15,6 @@ let selectedWord = words[
   Math.floor(Math.random() * words.length)
 ].toUpperCase();
 
-console.log(selectedWord);
-
 export default function Game() {
   const [playable, setPlayable] = useState(true);
   const [correctLetters, setCorrectLetters] = useState([]);
@@ -48,19 +46,53 @@ export default function Game() {
     window.addEventListener('keydown', handleKeydown);
 
     return () => window.removeEventListener('keydown', handleKeydown);
-  }, [correctLetters, wrongLetters, playable]);
+  }, [showNotification, correctLetters, wrongLetters, playable]);
+
+  const handleKeyClick = keyName => {
+    const letter = keyName;
+
+    if (playable) {
+      if (selectedWord.includes(letter)) {
+        if (!correctLetters.includes(letter)) {
+          setCorrectLetters(currentLetters => [...currentLetters, letter]);
+        } else {
+          show(setShowNotification);
+        }
+      } else {
+        if (!wrongLetters.includes(letter)) {
+          setWrongLetters(currentLetters => [...currentLetters, letter]);
+        } else {
+          show(setShowNotification);
+          console.log(showNotification);
+        }
+      }
+    }
+  };
+
+  const playAgain = () => {
+    setPlayable(true);
+
+    // empty arrays
+    setCorrectLetters([]);
+    setWrongLetters([]);
+
+    selectedWord = words[
+      Math.floor(Math.random() * words.length)
+    ].toUpperCase();
+  };
 
   return (
     <div className="game-container">
       <Figure wrongLetters={wrongLetters} />
       <WrongLetters wrongLetters={wrongLetters} />
       <Word selectedWord={selectedWord} correctLetters={correctLetters} />
-      <Keyboard />
+      <Keyboard handleKeyClick={handleKeyClick} />
       <Popup
         correctLetters={correctLetters}
         wrongLetters={wrongLetters}
         selectedWord={selectedWord}
         setPlayable={setPlayable}
+        playAgain={playAgain}
       />
       <Notification showNotification={showNotification} />
     </div>

@@ -101,7 +101,6 @@ body {
   left: 160px;
   height: 25px;
   width: 45px;
-  z-index: 10;
   transform: rotate(10deg);
 }
 
@@ -239,22 +238,25 @@ body {
   right: 0;
   display: flex;
   display: none;
-  align-items: center;
+  /* align-items: flex-end; */
   justify-content: center;
 }
 
 .popup {
-  background: #2980b9;
+  position: absolute;
+  background: var(--camel);
   border-radius: 10px;
   box-shadow: 0 15px 10px 3px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
+  height: 250px;
+  bottom: 50px;
 }
 
 .popup button {
   cursor: pointer;
   background-color: #fff;
-  color: #2980b9;
+  color: var(--camel);
   border: 0;
   border-radius: 10px;
   margin-top: 20px;

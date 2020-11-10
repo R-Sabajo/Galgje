@@ -2,11 +2,16 @@ import React from 'react';
 import Letter from './Letter';
 import alphabet from './Alphabet';
 
-const Keyboard = () => {
+const Keyboard = props => {
   return (
     <div className="keyboard">
       {alphabet.map(item => (
-        <Letter key={item.id} id={item.id} name={item.name} />
+        <Letter
+          handleKeyClick={props.handleKeyClick}
+          key={item.id}
+          id={item.id}
+          name={item.name}
+        />
       ))}
     </div>
   );
