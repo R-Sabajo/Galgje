@@ -1,15 +1,15 @@
 import React from 'react';
 
-export default function Word(props) {
+export default function Word({ selectedWord, correctLetters }) {
   return (
-    <div className="word_box">
-      {!props.isStarted ? (
-        <button className="startBtn" onClick={props.handleClick}>
-          Begin Spel
-        </button>
-      ) : (
-        <h1 className="word"> {props.answerArray}</h1>
-      )}
+    <div className="word">
+      {selectedWord.split('').map((letter, i) => {
+        return (
+          <span className="letter" key={i}>
+            {correctLetters.includes(letter) ? letter : '_'}
+          </span>
+        );
+      })}
     </div>
   );
 }

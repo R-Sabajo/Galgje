@@ -1,76 +1,68 @@
 import React, { useState, useEffect } from 'react';
-import GameView from './GameView';
+import Figure from './Figure';
 import WordsList from './WordsList';
 import Word from './Word';
-import Letter from './Letter';
-import alphabet from './Alphabet';
+import WrongLetters from './WrongLetters';
+import Keyboard from './Keyboard';
+import alphabetKeys from './alphabetKeys';
+import Notification from './Notification';
+import Popup from './Popup';
+import { showNotification as show } from '../helpers/helpers';
+
+const words = WordsList;
+
+let selectedWord = words[
+  Math.floor(Math.random() * words.length)
+].toUpperCase();
+
+console.log(selectedWord);
 
 export default function Game() {
-  const [randomWord, setRandomWord] = useState({});
-
-  const [isStarted, setIsStarted] = useState(false);
-
-  // function to select a random word from the WordsList
-  const handleClick = () => {
-    const randomIndex = Math.floor(Math.random() * WordsList.length);
-    setRandomWord(WordsList[randomIndex].toUpperCase().split(''));
-    setIsStarted(true);
-  };
-
-  // set the answerArray with dashes according to the random word length
-  const [answerArray, setAnswerArray] = useState([]);
+  const [playable, setPlayable] = useState(true);
+  const [correctLetters, setCorrectLetters] = useState([]);
+  const [wrongLetters, setWrongLetters] = useState([]);
+  const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
-    let arr = [];
-    for (let i = 0; i < randomWord.length; i++) {
-      arr.push('_');
-    }
-    setAnswerArray(arr);
-  }, [randomWord.length]);
+    const handleKeydown = event => {
+      const letter = event.key.toUpperCase();
 
-  console.log(randomWord);
-
-  // Number of guesses the players has
-  const [guesses, setGuesses] = useState(5);
-
-  const handleLetterClick = name => {
-    if (randomWord.includes(name)) {
-      console.log(name);
-      for (let j = 0; j < randomWord.length; j++) {
-        if (randomWord[j] === name) {
-          answerArray[j] = name;
+      if (playable && alphabetKeys.includes(letter)) {
+        if (selectedWord.includes(letter)) {
+          if (!correctLetters.includes(letter)) {
+            setCorrectLetters(currentLetters => [...currentLetters, letter]);
+          } else {
+            show(setShowNotification);
+          }
+        } else {
+          if (!wrongLetters.includes(letter)) {
+            setWrongLetters(currentLetters => [...currentLetters, letter]);
+          } else {
+            show(setShowNotification);
+            console.log(showNotification);
+          }
         }
       }
-      setAnswerArray(answerArray);
-      console.log(answerArray);
-    } else {
-      console.log('wrong');
-    }
-  };
+    };
 
-  // Array of letters not yet guessed by the player
-  const [lettersArray, setLettersArray] = useState(alphabet);
+    window.addEventListener('keydown', handleKeydown);
+
+    return () => window.removeEventListener('keydown', handleKeydown);
+  }, [correctLetters, wrongLetters, playable]);
 
   return (
-    <main className="game">
-      <GameView guessesLeft={guesses} />
-
-      <Word
-        isStarted={isStarted}
-        handleClick={handleClick}
-        answerArray={answerArray}
+    <div className="game-container">
+      <Figure wrongLetters={wrongLetters} />
+      <WrongLetters wrongLetters={wrongLetters} />
+      <Word selectedWord={selectedWord} correctLetters={correctLetters} />
+      <Keyboard />
+      <Popup
+        correctLetters={correctLetters}
+        wrongLetters={wrongLetters}
+        selectedWord={selectedWord}
+        setPlayable={setPlayable}
       />
-
-      <div className="lettersBox">
-        {lettersArray.map(item => (
-          <Letter
-            handleLetterClick={handleLetterClick}
-            key={item.id}
-            id={item.id}
-            name={item.name}
-          />
-        ))}
-      </div>
-    </main>
+      <Notification showNotification={showNotification} />
+    </div>
   );
 }
