@@ -295,6 +295,12 @@ body {
   outline: none;
 }
 
+.victoryDance {
+  position: relative;
+  bottom: 460px;
+  width: 380px;
+}
+
 /* Notification */
 
 .notification-container {
