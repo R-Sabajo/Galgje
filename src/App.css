@@ -93,6 +93,7 @@ body {
   left: 130px;
   height: 30px;
   width: 50px;
+  transition: all 500ms ease;
 }
 
 .gras2 {
@@ -152,6 +153,7 @@ body {
   display: grid;
   justify-content: center;
   align-items: center;
+  user-select: none;
 }
 
 .letter {
@@ -163,6 +165,7 @@ body {
   height: 50px;
   width: 20px;
   color: #333;
+  user-select: none;
 }
 
 .startBtn {
@@ -174,6 +177,7 @@ body {
   color: white;
   font-size: 1.5rem;
   border-radius: 30px;
+  user-select: none;
 }
 
 /* Letters Box */
@@ -198,6 +202,20 @@ body {
   width: 40px;
   height: 40px;
   margin: 2px 4px;
+  user-select: none;
+}
+
+.key:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  transition: scale 0.3s ease-in-out;
+  background: radial-gradient(#aaa 44%, #333);
+}
+
+.key:active {
+  background: radial-gradient(#aaa 44%, #333);
+  transform: scale(0.95);
+  transition: scale 0.3s ease-in-out;
 }
 
 /* Wrong letters container */
@@ -310,12 +328,3 @@ body {
 }
 
 /* Animations */
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
