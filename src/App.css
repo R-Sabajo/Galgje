@@ -284,9 +284,10 @@ body {
   border-radius: 10px 10px 0 0;
   padding: 15px 20px;
   position: absolute;
-  bottom: -50px;
-  visibility: hidden;
-  transition: all 0.3s ease-in-out;
+  bottom: 0px;
+  margin: 0 auto;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
 }
 
 .notification-container p {
@@ -294,8 +295,8 @@ body {
 }
 
 .notification-container.show {
-  transform: translateY(-50px);
-  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }
 
 /* footer */

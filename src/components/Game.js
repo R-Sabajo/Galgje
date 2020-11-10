@@ -37,7 +37,6 @@ export default function Game() {
             setWrongLetters(currentLetters => [...currentLetters, letter]);
           } else {
             show(setShowNotification);
-            console.log(showNotification);
           }
         }
       }
@@ -48,6 +47,7 @@ export default function Game() {
     return () => window.removeEventListener('keydown', handleKeydown);
   }, [showNotification, correctLetters, wrongLetters, playable]);
 
+  // Functions to handle clicks on the custom keyboard.
   const handleKeyClick = keyName => {
     const letter = keyName;
 

@@ -14,9 +14,6 @@ const Popup = ({
   // function to check if correctLetters array includes all of the letters in the selected Word.
   let checker = (arr, target) => target.every(l => arr.includes(l));
 
-  console.log(selectedWordArray);
-  console.log(correctLetters);
-
   if (checker(correctLetters, selectedWordArray)) {
     finalMessage = `Gefeliciteerd! \n Je hebt gewonnen! \n 🎉🥳🙌🎊`;
     playable = false;
