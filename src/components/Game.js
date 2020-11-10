@@ -6,20 +6,14 @@ import Letter from './Letter';
 import alphabet from './Alphabet';
 
 export default function Game() {
-  // random word state
   const [randomWord, setRandomWord] = useState({});
 
-  // Game started state
   const [isStarted, setIsStarted] = useState(false);
 
+  // function to select a random word from the WordsList
   const handleClick = () => {
-    // function to select a random word from the WordsList
     const randomIndex = Math.floor(Math.random() * WordsList.length);
-
-    // set the state for randomWord as an object.
     setRandomWord(WordsList[randomIndex].toUpperCase().split(''));
-
-    // Set the Game state as started.
     setIsStarted(true);
   };
 
