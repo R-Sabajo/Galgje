@@ -186,7 +186,7 @@ body {
 }
 
 .key {
-  background: radial-gradient(#555 50%, #333);
+  background: radial-gradient(#777 33%, #333);
   color: white;
   font-family: Montserrat;
   font-weight: 600;
@@ -238,7 +238,6 @@ body {
   right: 0;
   display: flex;
   display: none;
-  /* align-items: flex-end; */
   justify-content: center;
 }
 
@@ -286,7 +285,8 @@ body {
   padding: 15px 20px;
   position: absolute;
   bottom: -50px;
-  transition: transform 0.3s ease-in-out;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
 }
 
 .notification-container p {
@@ -295,6 +295,7 @@ body {
 
 .notification-container.show {
   transform: translateY(-50px);
+  visibility: visible;
 }
 
 /* footer */

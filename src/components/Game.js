@@ -63,7 +63,6 @@ export default function Game() {
           setWrongLetters(currentLetters => [...currentLetters, letter]);
         } else {
           show(setShowNotification);
-          console.log(showNotification);
         }
       }
     }
