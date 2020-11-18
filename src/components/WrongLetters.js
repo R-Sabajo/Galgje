@@ -3,7 +3,7 @@ import React from 'react';
 const WrongLetters = ({ wrongLetters }) => {
   return (
     <div className="wrong-letters-container">
-      {wrongLetters.length > 0 && <p>Fout</p>}
+      {wrongLetters.length > 0 && <p></p>}
       <div>
         {wrongLetters.map((letter, i) => {
           return (

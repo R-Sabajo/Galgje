@@ -3,7 +3,9 @@
 }
 
 :root {
-  --camel: #b58f51ff;
+  --green: #008148;
+  --wrong: #9d0208;
+  --back-color: #fcf5c7;
   --text-color: #333;
 }
 
@@ -19,7 +21,7 @@
 
 body {
   color: white;
-  font-family: Montserrat;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,14 +41,14 @@ body {
 }
 
 .header {
-  background-color: #282c34;
-  color: white;
+  background-color: var(--green);
+  color: var(--back-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
-  font-family: 'Montserrat';
+  font-size: 1rem;
+  font-family: 'Architects Daughter', cursive;
   font-weight: 200;
 }
 
@@ -55,8 +57,9 @@ body {
 }
 
 .header p {
-  margin: 5px 0 0 0;
-  font-weight: 400;
+  margin: 3px 0 0 0;
+  font-size: 12px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /* Game */
@@ -64,6 +67,7 @@ body {
 .game-container {
   display: grid;
   grid-template-rows: 40% 20% 40%;
+  background-color: var(--back-color);
 }
 
 .figure-container {
@@ -164,7 +168,7 @@ body {
   margin: 0 3px;
   height: 50px;
   width: 20px;
-  color: #333;
+  color: var(--green);
   user-select: none;
 }
 
@@ -173,7 +177,7 @@ body {
   font-weight: 600;
   width: 250px;
   height: 50px;
-  background-color: var(--camel);
+  background-color: var(--green);
   color: white;
   font-size: 1.5rem;
   border-radius: 30px;
@@ -190,9 +194,8 @@ body {
 }
 
 .key {
-  background: radial-gradient(#777 33%, #333);
+  background: radial-gradient(#468FAF 20%, #2A6F97); 
   color: white;
-  font-family: Montserrat;
   font-weight: 600;
   display: flex;
   justify-content: center;
@@ -209,11 +212,11 @@ body {
   transform: scale(1.05);
   cursor: pointer;
   transition: scale 0.3s ease-in-out;
-  background: radial-gradient(#aaa 44%, #333);
+  background: radial-gradient(#012A4A 44%, #01497C);
 }
 
 .key:active {
-  background: radial-gradient(#aaa 44%, #333);
+  background: radial-gradient(#012a4a 44%, #01497C);
   transform: scale(0.95);
   transition: scale 0.3s ease-in-out;
 }
@@ -222,16 +225,16 @@ body {
 
 .wrong-letters-container {
   position: absolute;
-  top: 90px;
+  top: 120px;
   left: 25px;
   display: flex;
   flex-direction: column;
-  text-align: left;
+  text-align: center;
 }
 
 .wrong-letters-container p {
-  color: var(--text-color);
-  margin: 0 0 5px;
+  color: var(--wrong);
+  margin: 0 0 15px;
   font-size: 20px;
   font-weight: 600;
 }
@@ -240,7 +243,17 @@ body {
 }
 
 .wrong-letter {
-  color: var(--text-color);
+  color: var(--back-color);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  margin: 0 15px 10px;
+  border: 1px solid;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  background: var(--wrong);
   display: flex;
   flex-direction: column;
 }
@@ -249,6 +262,8 @@ body {
 
 .popup-container {
   background-color: rgba(0, 0, 0, 0.3);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -261,19 +276,21 @@ body {
 
 .popup {
   position: absolute;
-  background: var(--camel);
+  color: var(--back-color);
+  background: var(--green);
   border-radius: 10px;
   box-shadow: 0 15px 10px 3px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 30px 20px;
   text-align: center;
-  height: 250px;
+  height: 280px;
   bottom: 50px;
 }
 
 .popup button {
   cursor: pointer;
-  background-color: #fff;
-  color: var(--camel);
+  background-color: var(--back-color);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: var(--green);
   border: 0;
   border-radius: 10px;
   margin-top: 20px;
@@ -304,7 +321,8 @@ body {
 /* Notification */
 
 .notification-container {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--wrong);
+  font-family: Georgia, 'Times New Roman', Times, serif;
   border-radius: 10px 10px 0 0;
   padding: 15px 20px;
   position: absolute;
@@ -326,8 +344,9 @@ body {
 /* footer */
 
 .footer {
-  background-color: #282c34;
-  color: #777;
+  background-color: var(--green);
+  font-size: 12px;
+  color: var(--back-color);
   display: flex;
   align-items: center;
   justify-content: center;
